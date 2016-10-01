@@ -1,5 +1,5 @@
 
-Example REST Endpoint Doc:
+#Example REST Endpoint Doc
 
 ### Name of End Point in basic English
 
