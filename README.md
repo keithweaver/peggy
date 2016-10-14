@@ -11,3 +11,11 @@ IBM Watson services being used:
 
 
 Before getting started, I've created docs for an [example commit](./docs/example-commit.md) and [example for documenting REST API end points](./docs/example-rest-api-doc.md).
+
+
+The server code is hosted on the [server branch](https://github.com/kweaver00/peggy/tree/server). This allows us to use one repo and not download the wrong code to the server.
+
+To view the server branch after you have clone the repo:
+```
+git checkout server
+```
