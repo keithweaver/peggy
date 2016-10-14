@@ -7,10 +7,12 @@
 		return json_encode($data);
 	}
 
+	include_once('../../../../include/secret.php');
+
 	//http://stackoverflow.com/questions/20064271/how-to-use-basic-authorization-in-php-curl
-	$username='ABC';
-	$password='XYZ';
-	$URL='<URL>';
+	$username = $RETRIEVE_AND_RANK_USER_NAME;
+	$password = $RETRIEVE_AND_RANK_PASSWORD;
+	$URL='https://gateway.watsonplatform.net/retrieve-and-rank/api/v1/solr_clusters';
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL,$URL);
@@ -22,5 +24,5 @@
 	$result=curl_exec ($ch);
 	curl_close ($ch);
 
-	echo json_encode($data);
+	echo json_encode($result);
 ?>
