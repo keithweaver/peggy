@@ -1,0 +1,5 @@
+<?php
+	$RETRIEVE_AND_RANK_USER_NAME = "";
+	$RETRIEVE_AND_RANK_PASSWORD = "";
+	
+?>
