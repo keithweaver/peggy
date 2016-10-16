@@ -1,2 +1,5 @@
 .DS_Store
+./include/secret
 ./include/secret.php
+/include/secret.php
+include/secret.php
