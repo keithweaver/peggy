@@ -1,18 +1,13 @@
 <?php
-	$data = array();
+	// WILL REQUIRE A CLUSTER
+	
+	$clusterId = "";
 
-	function error($msg){
-		$data['succes'] = false;
-		$data['msg'] = $msg;
-		return json_encode($data);
-	}
-
+	//THIS IS VERIFYING THE CLUSTER IS READY WITH solr_cluster_status
 	include_once('../../../../include/secret.php');
-
-	//http://stackoverflow.com/questions/20064271/how-to-use-basic-authorization-in-php-curl
 	$username = $RETRIEVE_AND_RANK_USER_NAME;
 	$password = $RETRIEVE_AND_RANK_PASSWORD;
-	$URL='https://gateway.watsonplatform.net/retrieve-and-rank/api/v1/solr_clusters';
+	$URL='https://gateway.watsonplatform.net/retrieve-and-rank/api/v1/solr_clusters/' . $clusterId;
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL,$URL);
@@ -24,7 +19,7 @@
 	$result=curl_exec ($ch);
 	curl_close ($ch);
 
-
-	//NEED TO SAVE solr_cluster_id
 	echo json_encode($result);
+
+	//solr_cluster_status <-- should be ready READY
 ?>
