@@ -1,8 +1,8 @@
 <?php
 	// WILL REQUIRE A CLUSTER
 	
-	$clusterId = "";
-	//http://www.ibm.com/watson/developercloud/doc/retrieve-rank/tutorial.shtml
+	$clusterId = "sc1689c542_dc4c_4cb5_bb51_6764d984e920";
+
 	//THIS IS VERIFYING THE CLUSTER IS READY WITH solr_cluster_status
 	include_once('../../../../include/secret.php');
 	$username = $RETRIEVE_AND_RANK_USER_NAME;
@@ -11,7 +11,7 @@
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL,$URL);
-	curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+	curl_setopt($ch, CURLOPT_TIMEOUT, 30); //timeout after 30 seconds
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
 	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
 	curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
@@ -22,4 +22,6 @@
 	echo json_encode($result);
 
 	//solr_cluster_status <-- should be ready READY
+
+	//"{\"solr_cluster_id\":\"sc1689c542_dc4c_4cb5_bb51_6764d984e920\",\"cluster_name\":\"ExampleTest2\",\"cluster_size\":\"1\",\"solr_cluster_status\":\"READY\"}"
 ?>
