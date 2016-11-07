@@ -7,28 +7,22 @@
 	//Handle Training Meta data
 	$classifierLang = "en";
 	$classifierName = "ExampleTest";
-	//English (en), Arabic (ar), French (fr), German, (de), Italian (it), Japanese (ja), Portuguese (pt), and Spanish (es)
+	//Options: English (en), Arabic (ar), French (fr), German, (de), Italian (it), Japanese (ja), Portuguese (pt), and Spanish (es)
 	$trainingMetaDataJSONContent = '{"name":"' . $classifierName . '","language":"' . $classifierLang . '"}';
 	
+	//Create a new JSON object for the meta training data
 	$trainingMetaDataVersion = 1;
-	
 	$trainingMetaDataFile = fopen('newtrainingdata_' . $trainingMetaDataVersion . '.json','w+');
 	fwrite($trainingMetaDataFile, $trainingMetaDataJSONContent);
 	fclose($trainingMetaDataFile);
 	
-	//uncomment to view contents of json
-	// $fp = fopen('newtrainingdata_' . $trainingMetaDataVersion . '.json', "r");
-	// fpassthru($fp);
-	// fclose($fp);
-
 	//Get file being passed in with parameter "trainingData"
-	//$localFile = $_FILES['trainingData']['tmp_name'];
 	$target_directory = './';
 	$filename = str_replace(" ","",basename( $_FILES['trainingData']['name']));
 	$target_path = $target_directory . $filename;
 	if(move_uploaded_file($_FILES['trainingData']['tmp_name'], $target_path)) {
 	} else{
-	    die("An error has occurred: Please contact us at support@eventbold.com or <a href='https://eventbold.com/support'>EventBold.com/support</a>");
+	    die("An error has occurred: With file upload");
 	}
 
 	$localFileRealPath = realpath($target_directory . $filename);
@@ -38,18 +32,33 @@
 	$password = $NATURAL_LANG_PASSWORD;
 	$URL = "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers";
 
-	// $post = [
-	// 	'training_data' => '@' . $localFileRealPath,
-	// 	'training_metadata' => '@' . realpath($trainingMetaDateFile) . '/newtrainingdata_' . $trainingMetaDataVersion . '.json'
-	// ];
-	//headers = array("Content-Type:multipart/form-data");
+
+	//Create the CURL File for the .csv file
+	/*
 	$finfo = finfo_open(FILEINFO_MIME_TYPE);
 	$finfo = finfo_file($finfo, $localFileRealPath);	
 	$cFile = new CURLFile($filename, $finfo, basename($filename));
+	*/
+	//Create the CURL File for the .json file
+	$filename2 = 'newtrainingdata_' . $trainingMetaDataVersion . '.json';
+	$localFileRealPath2 = realpath($target_directory . $filename2);
+	/*
+	
+	$finfo2 = finfo_open(FILEINFO_MIME_TYPE);
+	$finfo2 = finfo_file($finfo2, $localFileRealPath2);	
+	$cFile2 = new CURLFile($filename2, $finfo2, basename($filename2));
+	*/
+	$post = array();
+	$post['training_data'] = new CurlFile($localFileRealPath, 'text/csv', $filename);
+	$post['training_metadata'] = new CurlFile($localFileRealPath2, 'text/json', $filename2);
+	
+	// $args['file'] = new CurlFile('filename.png', 'image/png', 'filename.png');
+	
 
-	$post = [
-		$data = array("training_data" => $cFile,"training_metadata" => $cFile->postname);
-	];
+	//Create the post parameters
+	// $post = [
+	// 	$data = array("training_data" => $cFile,"training_metadata" => $cFile2)
+	// ];
 
 
 	$data_strings = json_encode($post);
@@ -61,6 +70,10 @@
 	
 
 	$ch = curl_init();
+
+	curl_setopt($ch, CURLOPT_POST, 1);
+	
+
 	curl_setopt($ch, CURLOPT_URL,$URL);
 	curl_setopt($ch, CURLOPT_TIMEOUT, 500);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
@@ -71,6 +84,7 @@
 		'Content-Type: application/json',                                                                                
 		'Content-Length: ' . strlen($data_strings))                                                                       
 	);
+
 	// curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
 	// 	'Content-Type: multipart/form-data',                                                                                
 	// 	'Content-Length: ' . strlen($data_strings))                                                                       
@@ -88,5 +102,14 @@
 
 
 	echo json_encode($result);
+	echo '<br/>';
+	echo '<br/>';
+	//echo '[' . $result['error'] . ']';
+
+	echo '<br/>';
+	echo '<br/>';
+	echo '<br/>';
+	echo '<br/>';
+	echo var_dump($post);
 	
 ?>
