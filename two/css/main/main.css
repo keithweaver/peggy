@@ -1,0 +1,27 @@
+body{
+	background-color: #f1f1f1;
+}
+.top-row{
+	padding-top: 60px;
+	padding-bottom: 60px;
+}
+.top-img{
+	height: 70px;
+}
+.title{
+	font-size:56px;
+	font-family: 'Catamaran', sans-serif;
+}
+.home-panel{
+	width: 100%;
+	background-color: white;
+}
+.content-row{
+	min-height: 100%;
+}
+.top-slogan{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+}

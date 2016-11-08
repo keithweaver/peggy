@@ -1,0 +1,20 @@
+.create-btn-wrapper{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+.create-btn-link{
+	text-decoration: none;
+}
+.create-btn-link:hover{
+	text-decoration: none;
+}
+.create-btn-wrap{
+	background-color: #298A08;
+	padding: 15px;
+	border-radius: 50%;
+}
+.create-btn-img{
+	height: 30px;
+	
+}

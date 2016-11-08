@@ -8,3 +8,11 @@
 	<input type="file" name="bookFile"/><br/>
 	<button type="submit">Upload</button>
 </form>
+
+<br/>
+<br/>
+<br/>
+<form enctype="multipart/form-data" method="POST" action="./test-pdf-page-numbers">
+	<input type="file" name="bookFile"/><br/>
+	<button type="submit">Upload</button>
+</form>

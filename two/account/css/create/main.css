@@ -1,0 +1,102 @@
+body{
+	background-color: #f1f1f1;
+	padding-top: 50px;
+}
+.create-row{
+	padding-top: 60px;
+	padding-bottom: 100px;
+}
+.create-panel{
+	width: 100%;
+	background-color: white;
+
+	padding:10px 20px;
+	padding-bottom: 50px;
+}
+.title{
+	font-size: 24px;
+}
+.project-name-label{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-family: 'Lato', sans-serif;
+}
+.project-name-textbox{
+	font-family: 'Lato', sans-serif;
+	font-size: 14px;
+
+	padding:5px 3px;
+	width: 100%;
+	max-width: 350px;
+}
+.services-label{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-family: 'Lato', sans-serif;
+	padding-top: 15px;
+}
+.services-text{
+	font-family: 'Lato', sans-serif;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+.disabled-services-text{
+	color: #D8D8D8;
+}
+.invite-team-label{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-family: 'Lato', sans-serif;
+	padding-top: 15px;
+}
+.invite-team-textarea{
+	font-family: 'Lato', sans-serif;
+	font-size: 14px;
+
+	padding:5px 3px;
+	width: 100%;
+	max-width: 200px;
+}
+.invite-team-list{
+	padding-top: 15px;
+	padding-bottom: 10px;
+
+	font-family: 'Lato', sans-serif;
+	font-size: 12px;
+}
+.invite-team-list-item{
+	background-color: #E0F2F7;
+	padding:3px 5px;
+	border-radius: 2px;
+
+	display: inline-block;
+}
+.create-btn-wrapper{
+	padding-top: 10px;
+}
+.create-btn{
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+
+	padding:8px 40px;
+
+	background-color: #01A9DB;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-bottom-color: #086A87;
+
+	border-radius: 6px;
+
+	color: white;
+
+}
+.create-btn:hover{
+	background-color: #086A87;
+}
+.loading-text{
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+}

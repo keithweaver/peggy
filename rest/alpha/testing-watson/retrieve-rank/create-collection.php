@@ -2,19 +2,27 @@
 	// WILL REQUIRE A CLUSTER THAT IS READY
 	
 	$clusterId = "sc1689c542_dc4c_4cb5_bb51_6764d984e920";
+	$collectionName = "ExampleCollection";
+	$configurationName = "cranfield-solr-config.zip";
 
 	include_once('../../../../include/secret.php');
 	$username = $RETRIEVE_AND_RANK_USER_NAME;
 	$password = $RETRIEVE_AND_RANK_PASSWORD;
 	
-	$URL = 'https://gateway.watsonplatform.net/retrieve-and-rank/api/v1/solr_clusters/' . $clusterId . '/solr/admin/collections?action=CREATE&name=ExampleCollection&wt=json';
+	$URL = 'https://gateway.watsonplatform.net/retrieve-and-rank/api/v1/solr_clusters/' . $clusterId . '/solr/admin/collections';
 	
 	$post = [
 		'action' => 'CREATE',
-		'name' => 'ExampleCollection'
+		'name' => $collectionName,
+		'collection.configName' => $configurationName,
+		'wt' => 'json'
 	];
 
 	$data_strings = json_encode($post);
+
+	$URL .= '?action=CREATE&name=' . $collectionName . '&collection.configName=' . $configurationName . '&wt=json';
+	// $URL .= '?action=CREATE&name=' . $collectionsName . '&collection.configName=' . $configurationName . '&wt=json"';
+
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL,$URL);
@@ -28,10 +36,62 @@
 		'Content-Length: ' . strlen($data_strings))                                                                       
 	);
 	$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-	$result=curl_exec ($ch);
+	$response = curl_exec($ch);
 	curl_close ($ch);
+	$results = json_decode($response);
 
-	echo json_encode($result);
+	// echo var_dump($response);
+
+	// echo '<br/>';
+	// echo '<br/>';
+
+	echo json_encode($results);
 
 	//solr_cluster_status <-- should be ready READY
+
+	/*
+	{
+		"responseHeader": {
+		"status": 0,
+		"QTime": 11352
+		},
+		"success": {
+		"10.176.45.164:5896_solr": {
+		"responseHeader": {
+		"status": 0,
+		"QTime": 1840
+		},
+		"core": "ExampleCollection2_shard1_replica1"
+		},
+		"10.176.142.190:6067_solr": {
+		"responseHeader": {
+		"status": 0,
+		"QTime": 2168
+		},
+		"core": "ExampleCollection2_shard1_replica2"
+		}
+		}
+	}
+	{
+		"responseHeader": {
+		"status": 400,
+		"QTime": 9
+		},
+		"Operation create caused exception:": "org.apache.solr.common.SolrException:org.apache.solr.common.SolrException: collection already exists: ExampleCollection",
+		"exception": {
+		"msg": "collection already exists: ExampleCollection",
+		"rspCode": 400
+		},
+		"error": {
+		"metadata": [
+		  "error-class",
+		  "org.apache.solr.common.SolrException",
+		  "root-error-class",
+		  "org.apache.solr.common.SolrException"
+		],
+		"msg": "collection already exists: ExampleCollection",
+		"code": 400
+		}
+	}
+	*/
 ?>

@@ -1,0 +1,26 @@
+.submenu-wrapper{
+	width: 100%;
+	background-color: white;
+}
+.submenu-item-wrap{
+	font-size: 14px;
+}
+.submenu-item{
+	font-family: 'Lato', sans-serif;
+
+	padding:4px 8px;
+
+	text-decoration: none;
+
+	color: #6E6E6E;
+}
+.submenu-item:hover{
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-bottom-color: #B40431;
+
+	text-decoration: none;
+
+	color: #6E6E6E;
+	/*#B40431*/
+}

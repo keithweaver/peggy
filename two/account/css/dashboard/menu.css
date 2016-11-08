@@ -1,0 +1,32 @@
+.menu-wrapper{
+	width: 100%;
+	background-color: white;
+	/*margin-top: -6px;*/
+}
+
+.menu-row{
+	padding-top: 6px;
+}
+.menu-item-wrap{
+	font-size: 14px;
+
+}
+.menu-item{
+	font-family: 'Lato', sans-serif;
+
+	padding:4px 8px;
+	
+	text-decoration: none;
+
+	color: #6E6E6E;
+}
+.menu-item:hover{
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-bottom-color: #086A87;
+
+	text-decoration: none;
+
+	color: #6E6E6E;
+	/*#B40431*/
+}

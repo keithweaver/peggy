@@ -1,0 +1,15 @@
+body{
+	padding-top: 50px;
+}
+#navbar{
+	background-color: white;
+
+}
+.navbar-logo{
+	height: 32px;
+	margin-top: -4px;
+}
+.settings-navbar-item{
+	height: 22px;
+	
+}

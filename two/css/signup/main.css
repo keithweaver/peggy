@@ -1,0 +1,76 @@
+body{
+	background-color: #f1f1f1;
+}
+.signup-panel{
+	width: 100%;
+	max-width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+	padding:10px 15px;
+	border-radius: 5px;
+}
+.signup-textbox{
+	width: 100%;
+	padding:3px 4px;
+}
+.email-label{
+	text-align: left;
+	font-size: 10px;
+
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.password-label{
+	padding-top: 5px;
+
+	text-align: left;
+	font-size: 10px;
+
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.login-btn-wrapper{
+	width: 100%;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+.login-btn{
+	background-color: #298A08;
+
+	font-family: 'Lato', sans-serif;
+	font-size: 14px;
+	color: white;
+
+	padding:3px 15px;
+
+	border-radius: 5px;
+	border-bottom-width: 4px;
+	border-bottom-style: solid;
+	border-bottom-color: #21610B;
+
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+}
+.login-btn:hover{
+	background-color: #21610B;
+}
+.signup-bottom-text{
+	padding-top: 10px;
+	font-size: 10px;
+	font-family: 'Lato', sans-serif;
+	text-align: left;
+}
+#signupText{
+	padding-left: 5px;
+}
+#resetPassword{
+	padding-right: 3px;
+}
+.loading-text{
+	font-size: 10px;
+	font-family: 'Lato', sans-serif;
+	color: #2e2e2e;
+}

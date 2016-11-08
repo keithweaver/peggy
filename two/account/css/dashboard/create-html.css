@@ -1,0 +1,50 @@
+.create-htmldocs-title-row{
+	padding-top: 20px;
+}
+.create-html-row{
+	padding-top: 0px;
+	padding-bottom: 20px;
+}
+.create-html-title-input{
+	width: 100%;
+	max-width: 300px;
+	margin-top: 5px;
+
+	padding:5px 3px;
+	font-family: 'Lato', sans-serif;
+}
+.create-html-help-text{
+	color: #A4A4A4;
+	font-family: 'Lato', sans-serif;
+}
+.create-html-textarea{
+	width: 100%;
+	max-width: 100%;
+	min-width: 100%;
+
+	height: 300px;
+
+	padding: 5px 5px;
+}
+.create-html-btn-row{
+	text-align: right;
+	padding-top: 10px;
+	padding-bottom: 40px;
+}
+.create-html-btn{
+	border-color: #DF3A01;
+	border-radius: 5px;
+	border-width: 2px;
+	border-style: solid;
+
+	color: #DF3A01;
+
+	background-color: rgba(0,0,0,0);
+
+	font-size: 16px;
+	padding: 8px 35px;
+}
+.create-html-btn:hover{
+	background-color: #DF3A01;
+	color: white;
+}

@@ -34,8 +34,9 @@
 		'Content-Length: ' . strlen($data_strings))                                                                       
 	);
 	$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);   //get status code
-	$result=curl_exec ($ch);
+	$resp=curl_exec ($ch);
 	curl_close ($ch);
+	$result = json_decode($resp);
 
 	//sc1689c542_dc4c_4cb5_bb51_6764d984e920
 	//"{\"solr_cluster_id\":\"sc1689c542_dc4c_4cb5_bb51_6764d984e920\",\"cluster_name\":\"ExampleTest2\",\"cluster_size\":\"1\",\"solr_cluster_status\":\"NOT_AVAILABLE\"}"
