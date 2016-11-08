@@ -4,7 +4,7 @@
 	*/
 	$data = array();
 
-	$classifierId = $_POST['id'];
+	$classifierId = $_POST['classifierId'];
 	$classifierId = addslashes($classifierId);
 
 
@@ -17,29 +17,31 @@
 	$URL = "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/" . $classifierId;
 
 
-	//Parameters for the REST call
-	$post = array();
-	//add POST parameters here
-	$data_strings = json_encode($post);
-
 	//CURL Request
 	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_URL,$URL);
 	curl_setopt($ch, CURLOPT_TIMEOUT, 500);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
 	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
 	curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $data_strings);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
 		'Content-Type: application/json',                                                                                
 		'Content-Length: ' . strlen($data_strings))                                                                       
 	);
 	$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-	$results=curl_exec($ch);
+	$resp=curl_exec($ch);
 	curl_close ($ch);
+	$results = json_decode($resp);
 
-	$data['classifier'] = $results;
+	//echo var_dump($resp);
+
+	$classifier = array();
+	$classifier['id'] = $results->classifier_id;
+	$classifier['name'] = $results->name;
+	$classifier['language'] = $results->language;
+	$classifier['created'] = $results->created;
+
+	$data['classifier'] = $classifier;
 	$data['success'] = true;
 	$data['message'] = "Successfully load classifier information.";
 

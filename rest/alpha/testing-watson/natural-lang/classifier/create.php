@@ -9,7 +9,7 @@
 
 	//Handle Training Meta data
 	$classifierLang = "en";
-	$classifierName = "ExampleTest";
+	$classifierName = "ExampleTest3";
 	//Options: English (en), Arabic (ar), French (fr), German, (de), Italian (it), Japanese (ja), Portuguese (pt), and Spanish (es)
 	$trainingMetaDataJSONContent = '{"name":"' . $classifierName . '","language":"' . $classifierLang . '"}';
 	
@@ -27,7 +27,6 @@
 	
 	
 	//Get file being passed in with parameter "trainingData"
-	
 	$filename = str_replace(" ","",basename( $_FILES['trainingData']['name']));
 	$target_path = $target_directory . $filename;
 	if(move_uploaded_file($_FILES['trainingData']['tmp_name'], $target_path)) {
@@ -41,74 +40,50 @@
 	//Make CURL request with files ($localFileRealPath, realpath($trainingMetaDateFile))
 	$username = $NATURAL_LANG_USER_NAME;//$NATURAL_LANG_USER_NAME <-- this variable is in secret.php
 	$password = $NATURAL_LANG_PASSWORD;
-	$URL = "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/";
+	$URL = "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers";
 
+	//Putting together the Post parameters
+	$trainingDataF = new CURLFile($filename, 'text/csv', 'training_data');
+	$trainingDataMetaF = new CURLFile($filename2, 'application/json', 'training_metadata');
 
-	//Create CURL File
 	$post = array();
-	$post['training_data'] = new CurlFile($localFileRealPath, 'text/csv', $filename);
-	$post['training_metadata'] = new CurlFile($localFileRealPath2, 'text/json', $filename2);
-	
-	$data_strings = json_encode($post);
+	$post['training_data'] = $trainingDataF;
+	$post['training_metadata'] = $trainingDataMetaF;
 
-	echo $data_strings;
-	echo '<br/>';
-	echo '<br/>';
-	// var_dump($post);
-	
-
+	//Making the POST request
 	$ch = curl_init();
-
 	curl_setopt($ch, CURLOPT_POST, 1);
-	
-
 	curl_setopt($ch, CURLOPT_URL,$URL);
 	curl_setopt($ch, CURLOPT_TIMEOUT, 500);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
 	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
 	curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $data_strings);
-	// curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-	// 	'Content-Type: application/x-www-form-urlencoded',                                                                                
-	// 	'Content-Length: ' . strlen($data_strings))                                                                       
-	// );
-
-	//TRYING TO SOLVE MY BUG
-	// $headers = array(    "Accept-Encoding: gzip",
- //                     "Content-Type: application/json");
-	
-	//TRYING AGAIN
-	// $headers = array(
- //            "Accept: */*",
- //            "Content-Type: application/x-www-form-urlencoded",
- //            "User-Agent: runscope/0.1",
- //            "Authorization: Basic " . base64_encode("$username:$password"));
-	//$headers= array('Accept: application/json','Content-Type: application/json');
-	// $headers = array('Accept: application/json','Content-Type: multipart/form-data');
-	//
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 	$headers = array('Accept: application/json','Content-Type: multipart/form-data');
 	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+	$resp = curl_exec($ch);
+	$results = json_decode($resp);
 
-	$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-	$result=curl_exec($ch);
-	
-
+	//Handling errors with the CURL so 404, 400, 415, 500
 	if(!curl_errno($ch)){
 		$info = curl_getinfo($ch);
+
+		// if($info['http_code'] == 400){
+		// 	die("JSON file or classifier class name already used or max number of classifiers. 400 error");
+		// }
+		// if($info['http_code'] == 415){
+		// 	die("415 error. invalid type");
+		// }
 		echo json_encode($info);
 	}
     curl_close ($ch);
 
-
-	echo json_encode($result);
-	echo '<br/>';
-	echo '<br/>';
-	//echo '[' . $result['error'] . ']';
-
-	echo '<br/>';
-	echo '<br/>';
-	echo '<br/>';
-	echo '<br/>';
-	echo var_dump($post);
+    //Putting the new created classifier data into the response
+	$data['classifierId'] = $results->classifier_id;
+	$data['classifierName'] = $results->name;
+	$data['classifierStatus'] = $results->status;
+	$data['classifierStatusDescription'] = $results->status_description;
+	$data['success'] = true;
+	$data['message'] = "Success. Created new classifier.";
 	
 ?>

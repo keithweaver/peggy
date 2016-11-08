@@ -4,7 +4,7 @@
 	*/
 	$data = array();
 
-	$classifierId = $_POST['id'];
+	$classifierId = $_POST['classifierId'];
 	$classifierId = addslashes($classifierId);
 
 	$phrase = $_POST['phrase'];
@@ -21,7 +21,7 @@
 
 	$post = array();
 	$post["text"] = $phrase;
-	$post["classifier_id"] = $classifierId;
+	//$post["classifier_id"] = $classifierId;
 	$data_strings = json_encode($post);
 
 	$ch = curl_init();
@@ -37,12 +37,26 @@
 		'Content-Length: ' . strlen($data_strings))                                                                       
 	);
 	$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-	$results=curl_exec($ch);
+	$resp=curl_exec($ch);
 	curl_close ($ch);
+	$results = json_decode($resp);
+
+	if($results->code == 409){//needs testing
+		die($results->error);
+	}
+
+	$cs = array();
+	foreach ($results->classes as $class) {
+		$c = array();
+		$c["name"] = $class->class_name;
+		$c["confidence"] = $class->confidence;
+
+		array_push($cs, $c);
+	}
 
 	//Prep results
-	$data['top_class'] = $results['top_class'];
-	$data['classes'] = $results['classes'];
+	$data['top_class'] = $results->top_class;
+	$data['classes'] = $cs;
 	$data['success'] = true;
 	$data['message'] = "Successfully Classified.";
 
