@@ -39,7 +39,7 @@
 	$localFileRealPath = realpath($target_directory . $filename);
 		
 	//Make CURL request with files ($localFileRealPath, realpath($trainingMetaDateFile))
-	$username = $NATURAL_LANG_USER_NAME;
+	$username = $NATURAL_LANG_USER_NAME;//$NATURAL_LANG_USER_NAME <-- this variable is in secret.php
 	$password = $NATURAL_LANG_PASSWORD;
 	$URL = "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/";
 
@@ -76,15 +76,17 @@
 	//TRYING TO SOLVE MY BUG
 	// $headers = array(    "Accept-Encoding: gzip",
  //                     "Content-Type: application/json");
-	// 
-	//TRYING AGAIN
 	
+	//TRYING AGAIN
 	// $headers = array(
  //            "Accept: */*",
  //            "Content-Type: application/x-www-form-urlencoded",
  //            "User-Agent: runscope/0.1",
  //            "Authorization: Basic " . base64_encode("$username:$password"));
-	$headers= array('Accept: application/json','Content-Type: application/json');
+	//$headers= array('Accept: application/json','Content-Type: application/json');
+	// $headers = array('Accept: application/json','Content-Type: multipart/form-data');
+	//
+	$headers = array('Accept: application/json','Content-Type: multipart/form-data');
 	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
 	$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
