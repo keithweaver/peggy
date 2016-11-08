@@ -19,13 +19,15 @@
 	fwrite($trainingMetaDataFile, $trainingMetaDataJSONContent);
 	fclose($trainingMetaDataFile);
 
+	$target_directory = './';
+
 	//Find the path for the JSON file
 	$filename2 = 'newtrainingdata_' . $trainingMetaDataVersion . '.json';
 	$localFileRealPath2 = realpath($target_directory . $filename2);
 	
 	
 	//Get file being passed in with parameter "trainingData"
-	$target_directory = './';
+	
 	$filename = str_replace(" ","",basename( $_FILES['trainingData']['name']));
 	$target_path = $target_directory . $filename;
 	if(move_uploaded_file($_FILES['trainingData']['tmp_name'], $target_path)) {
@@ -39,7 +41,7 @@
 	//Make CURL request with files ($localFileRealPath, realpath($trainingMetaDateFile))
 	$username = $NATURAL_LANG_USER_NAME;
 	$password = $NATURAL_LANG_PASSWORD;
-	$URL = "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers";
+	$URL = "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/";
 
 
 	//Create CURL File
@@ -66,10 +68,24 @@
 	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
 	curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $data_strings);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-		'Content-Type: application/json',                                                                                
-		'Content-Length: ' . strlen($data_strings))                                                                       
-	);
+	// curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+	// 	'Content-Type: application/x-www-form-urlencoded',                                                                                
+	// 	'Content-Length: ' . strlen($data_strings))                                                                       
+	// );
+
+	//TRYING TO SOLVE MY BUG
+	// $headers = array(    "Accept-Encoding: gzip",
+ //                     "Content-Type: application/json");
+	// 
+	//TRYING AGAIN
+	
+	// $headers = array(
+ //            "Accept: */*",
+ //            "Content-Type: application/x-www-form-urlencoded",
+ //            "User-Agent: runscope/0.1",
+ //            "Authorization: Basic " . base64_encode("$username:$password"));
+	$headers= array('Accept: application/json','Content-Type: application/json');
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
 	$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 	$result=curl_exec($ch);
