@@ -3,8 +3,8 @@
 	$data = array();
 
 
-	include_once('../../../../../include/common_rest_functions.php');
-	include_once('../../../../../include/secret.php');
+	include_once('../../../../include/common_rest_functions.php');
+	include_once('../../../../include/secret.php');
 
 	//Get Type being convert to
 	$convertToType = $_POST['type'];
@@ -41,8 +41,6 @@
 	//Make CURL request with files
 	$username = $DOCUMENT_CONVERSION_USER_NAME;
 	$password = $DOCUMENT_CONVERSION_PASSWORD;
-	// $URL = "https://gateway.watsonplatform.net/document-conversion/api/v1/convert_document?version=" . $date;
-	// $URL = "https://gateway.watsonplatform.net/document-conversion/api/v1/convert_document";
 	$URL = "https://gateway.watsonplatform.net/document-conversion/api/v1/convert_document?version=2015-12-15";
 
 	//Putting together the Post parameters
@@ -61,12 +59,16 @@
 	curl_setopt($ch, CURLOPT_TIMEOUT, 500);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
 	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-	curl_setopt($ch, CURLOPT_USERPWD, "INSERT_USERNAME:INSERT_PASSWORD");//Insert your password and user name
+	curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");//Insert your password and user name
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 	$headers = array('Accept: application/json','Content-Type: multipart/form-data');
 	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 	$resp = curl_exec($ch);
 	$results = json_decode($resp);
+
+	if($results->code == 500){
+		die(error("Error 500: " . $results->error));
+	}
 
 	$metadata = array();
 	foreach ($results->metadata as $obj) {

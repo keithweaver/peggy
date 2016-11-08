@@ -15,4 +15,5 @@
 		$data['msg'] = $msg;
 		return json_encode($data);
 	}
+	
 ?>
