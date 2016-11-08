@@ -1,4 +1,7 @@
 <?php
+	/*
+	Creates a new classifier with training data.
+	*/
 	$data = array();
 
 	include_once('../../../../../include/common_rest_functions.php');

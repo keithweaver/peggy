@@ -1,4 +1,5 @@
 <?php
+	die("This file is incorrect and will be removed.");
 	$data = array();
 
 	include_once('../../../../../include/common_rest_functions.php');
