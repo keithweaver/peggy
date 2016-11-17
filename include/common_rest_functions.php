@@ -31,7 +31,7 @@
 		$data['msg'] = $msg;
 		return json_encode($data);
 	}
-<<<<<<< HEAD
+
 	function generateRandomStr($size){
 		$l = array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z");
 		$s = "";
@@ -106,7 +106,5 @@
 		}
 		return $s;
 	}
-=======
-	
->>>>>>> b292890daf114effdfd4adba02ac5db089a0f5a3
+
 ?>
