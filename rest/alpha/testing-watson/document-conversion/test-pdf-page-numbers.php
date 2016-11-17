@@ -48,7 +48,10 @@
 
 	// $command = new GhostscriptConverterCommand();
 	// $filesystem = new Filesystem();
+<<<<<<< HEAD
 	//
+=======
+>>>>>>> b292890daf114effdfd4adba02ac5db089a0f5a3
 
 	if($pdfVersion > '1.4'){
 		die("Unsupported version of PDF.");
@@ -58,7 +61,11 @@
 
 		//Current solution:
 		//http://apple.stackexchange.com/questions/115030/install-ghostscript-on-os-x-10-9-using-dmg-file
+<<<<<<< HEAD
 		//gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile=new-pdf1.5.pdf input.pdf
+=======
+		//gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile=new-pdf1.5.pdf WhattoExpectWhenYoureExpecting5thEdition2016.pdf
+>>>>>>> b292890daf114effdfd4adba02ac5db089a0f5a3
 		//gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile=new-pdf1.5.pdf Input.pdf
 	}else{
 		// echo '1.4 or lower version.';
