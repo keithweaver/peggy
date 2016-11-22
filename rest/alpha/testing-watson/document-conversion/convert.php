@@ -74,8 +74,13 @@
 	foreach ($results->metadata as $obj) {
 		$metadata[$obj->name] = $obj->content;
 	}
-	
+		
+
+	$con = mysqli_connect("localhost","root","root","marketPlaceDB");
+
 	$content = array();
+	$data['temp1'] = count($results->answer_units);
+	$i = 0;
 	foreach ($results->answer_units as $obj) {
 		$pieceOfContent = array();
 		$pieceOfContent['id'] = $obj->id;
@@ -85,21 +90,44 @@
 		$pieceOfContent['direction'] = $obj->direction;
 		$c = array();
 		$contentFromObj = $obj->content;
+
+		//HACK
+		$text = "";
+		$title = $obj->title;
+
+
 		foreach ($contentFromObj as $singleContentObj) {
 			$c2 = array();
 
 			$c2['media_type'] = $singleContentObj->media_type;
 			$c2['text'] = $singleContentObj->text;
 
+			$text = $singleContentObj->text;
+
 			array_push($c, $c2);
 		}
 		$pieceOfContent['content'] = $c;
 
 		array_push($content, $pieceOfContent);
+
+		$text = addslashes($text);
+		$title = addslashes($title);
+
+		if($title != "no-title"){
+			if(strlen($title) == 1){
+				$text = $title . $text;
+				$title = "";
+			}
+			mysqli_query($con, "INSERT INTO knowledge (title, content) VALUES ('$title','$text')") or die(error("Error: "));
+		}
+
  	}
+
+
+ 	
  	
  	$data['success'] = true;
  	$data['message'] = "Document Converted";
  	$data['content'] = $content;
-	echo json_encode($data);
+ 	echo json_encode($data);
 ?>
