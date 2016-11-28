@@ -198,5 +198,94 @@
 	Created at: 10:28 am ---> 10:37 am
 
 	{"ranker_id":"54922ax21-rank-648","name":"PeggyRanker","created":"2016-11-28T15:28:12.591Z","url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers\/54922ax21-rank-648","status":"Failed","status_description":"Error encountered during training: Training data quality standards not met: invalid header (reserved character(s) (\" \") used in the entry \"have your doubts about diets\"). Row 1 of input data."}
+	
+
+	training7.csv
+	
+	76643bx23-rank-398
+
+	Upload this one to Google Sheets to see if there was something wrong with the file headers or something like that. It seemed to be accepted as a proper csv file but trying anyway.
+
+	{"url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers","content_type":"application\/json","http_code":200,"header_size":2028,"request_size":575,"filetime":-1,"ssl_verify_result":0,"redirect_count":1,"total_time":1.34457,"namelookup_time":7.5e-5,"connect_time":0.076414,"pretransfer_time":0.235508,"size_upload":26905,"size_download":314,"speed_download":233,"speed_upload":20010,"download_content_length":-1,"upload_content_length":26905,"starttransfer_time":0.291772,"redirect_time":0.641483,"redirect_url":"","primary_ip":"158.85.132.88","certinfo":[],"primary_port":443,"local_ip":"192.168.1.5","local_port":64135}{"ranker_id":"76643bx23-rank-398","name":"PeggyRanker","created":"2016-11-28T15:42:38.895Z","url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers\/76643bx23-rank-398","status":"Training","status_description":"The ranker instance is in its training phase, not yet ready to accept rank requests"}
+	
+	Created at 10:43 am --> 10:54 am
+		
+	New error! <-- got it cause the additional ,,,, on the end of most rows
+
+	{"ranker_id":"76643bx23-rank-398","name":"PeggyRanker","created":"2016-11-28T15:42:38.895Z","url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers\/76643bx23-rank-398","status":"Failed","status_description":"Error encountered during training: Training data quality standards not met: invalid header (duplicate feature names). Row 1 of input data."}
+
+
+	training8.csv
+	
+	76643bx23-rank-399
+
+	For this one, I changed the download mime type to match the curl file upload type. So it went from:
+	header('Content-Type: application/excel'); to header('Content-Type: text/csv'); on my download because its text/csv for the retrieve and rank file.
+
+	{"url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers","content_type":"application\/json","http_code":200,"header_size":2030,"request_size":575,"filetime":-1,"ssl_verify_result":0,"redirect_count":1,"total_time":1.598376,"namelookup_time":0.000108,"connect_time":0.05516,"pretransfer_time":0.2468,"size_upload":25618,"size_download":314,"speed_download":196,"speed_upload":16027,"download_content_length":-1,"upload_content_length":25618,"starttransfer_time":0.299025,"redirect_time":0.724437,"redirect_url":"","primary_ip":"158.85.132.88","certinfo":[],"primary_port":443,"local_ip":"192.168.1.5","local_port":64183}{"ranker_id":"76643bx23-rank-399","name":"PeggyRanker","created":"2016-11-28T15:49:47.397Z","url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers\/76643bx23-rank-399","status":"Training","status_description":"The ranker instance is in its training phase, not yet ready to accept rank requests"}
+	
+	Created at 10:50 am --> 11 am
+
+	{"ranker_id":"76643bx23-rank-399","name":"PeggyRanker","created":"2016-11-28T15:49:47.397Z","url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers\/76643bx23-rank-399","status":"Failed","status_description":"Error encountered during training: Training data quality standards not met: invalid header (reserved character(s) (\" \") used in the entry \"have your doubts about diets\"). Row 1 of input data."}
+	
+	Same error
+	
+
+
+	training9.csv
+
+	76643bx23-rank-401
+	
+	Same as training7.csv but removed the ,,,,, on the ends.
+	
+	{"url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers","content_type":"application\/json","http_code":200,"header_size":2004,"request_size":575,"filetime":-1,"ssl_verify_result":0,"redirect_count":1,"total_time":1.267063,"namelookup_time":0.000118,"connect_time":0.066312,"pretransfer_time":0.339515,"size_upload":22617,"size_download":314,"speed_download":247,"speed_upload":17849,"download_content_length":-1,"upload_content_length":22617,"starttransfer_time":0.397753,"redirect_time":0.474911,"redirect_url":"","primary_ip":"158.85.132.88","certinfo":[],"primary_port":443,"local_ip":"192.168.1.5","local_port":64274}{"ranker_id":"76643bx23-rank-401","name":"PeggyRanker","created":"2016-11-28T15:58:46.715Z","url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers\/76643bx23-rank-401","status":"Training","status_description":"The ranker instance is in its training phase, not yet ready to accept rank requests"}
+
+	Created at 10:59 --> 11:16
+	
+	{"ranker_id":"76643bx23-rank-401","name":"PeggyRanker","created":"2016-11-28T15:58:46.715Z","url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers\/76643bx23-rank-401","status":"Failed","status_description":"Error encountered during training: Training data quality standards not met: invalid header (reserved character(s) (\" \") used in the entry \"have your doubts about diets\"). Row 1 of input data."}
+
+
+	cranfield-gt.csv
+
+	766366x22-rank-404
+
+	Trying the example file
+
+	{"url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers","content_type":"application\/json","http_code":200,"header_size":2006,"request_size":575,"filetime":-1,"ssl_verify_result":0,"redirect_count":1,"total_time":1.743783,"namelookup_time":4.9e-5,"connect_time":0.055787,"pretransfer_time":0.23175,"size_upload":30182,"size_download":314,"speed_download":180,"speed_upload":17308,"download_content_length":-1,"upload_content_length":30182,"starttransfer_time":0.283937,"redirect_time":0.943008,"redirect_url":"","primary_ip":"158.85.132.88","certinfo":[],"primary_port":443,"local_ip":"192.168.1.5","local_port":64295}{"ranker_id":"766366x22-rank-404","name":"PeggyRanker","created":"2016-11-28T16:02:15.732Z","url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers\/766366x22-rank-404","status":"Training","status_description":"The ranker instance is in its training phase, not yet ready to accept rank requests"}
+	
+	Created at 11:02 am --> 11:16
+	
+	{"ranker_id":"766366x22-rank-404","name":"PeggyRanker","created":"2016-11-28T16:02:15.732Z","url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers\/766366x22-rank-404","status":"Failed","status_description":"Error encountered during training: Training data quality standards not met: invalid header (duplicate feature names). Row 1 of input data."}
+	
+	//There training data got an error.
+
+
+
+	traning10.csv
+	
+	54922ax21-rank-652
+
+	{"url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers","content_type":"application\/json","http_code":200,"header_size":2008,"request_size":575,"filetime":-1,"ssl_verify_result":0,"redirect_count":1,"total_time":2.312937,"namelookup_time":7.1e-5,"connect_time":0.053698,"pretransfer_time":0.29857,"size_upload":30125,"size_download":314,"speed_download":135,"speed_upload":13024,"download_content_length":-1,"upload_content_length":30125,"starttransfer_time":0.362681,"redirect_time":1.318349,"redirect_url":"","primary_ip":"158.85.132.88","certinfo":[],"primary_port":443,"local_ip":"192.168.1.5","local_port":64623}{"ranker_id":"54922ax21-rank-652","name":"PeggyRanker","created":"2016-11-28T16:30:25.296Z","url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers\/54922ax21-rank-652","status":"Training","status_description":"The ranker instance is in its training phase, not yet ready to accept rank requests"}
+
+	Created at: 11:30 am --->
+
+
+	
+
+	https://www.ibm.com/watson/developercloud/doc/retrieve-rank/training_data.shtml#data_stds
+	Minimum Standard For Training Questions:
+	- The file must contain at least 49 unique questions.
+	(Check, we have 400+)
+	- The number of feature vectors (that is, rows in your CSV training-data file) must be 10 times the number of features (that is, feature columns) in each row.
+	(Check, max number of features is 5, and we have 400+ rows but it only has to be 10x5=50)
+	- The relevance label must be a non-negative integer (between zero (0) and some upper limit).
+	(Check, I only stored ints in the db)
+	- At least two different relevance labels must exist in the data and those labels must be well represented. A label is well represented if it occurs at least once for every 100 unique questions.
+	(Check, labels 0 - 5)
+	- At least 25% of the questions must have some label variety in the answer set. That is, all of the candidate answers for a single question cannot be labeled with a single relevance level.
+	(Check, but wont stop my file upload so not related to this error)
+	- The relevance value zero (0) has specific implications when training a ranker. Any documents labeled 0 are considered totally irrelevant to the question. That being said, the training data must contain some zero-labeled documents to strengthen the system's ability to search for relevant labels.
+	(Missing, this is wrong in our previous data files training9 and below but again wouldnt escape characters)
+
 	*/
 ?>
