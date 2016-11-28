@@ -188,5 +188,15 @@
 	{"ranker_id":"54922ax21-rank-645","name":"PeggyRanker","created":"2016-11-28T14:49:56.296Z","url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers\/54922ax21-rank-645","status":"Failed","status_description":"Error encountered during training: Training data quality standards not met: invalid header (reserved character(s) (\" \") used in the entry \"have your doubts about diets\"). Row 1 of input data."}
 
 
+	
+	training(6).csv
+
+	54922ax21-rank-648
+
+	{"url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers","content_type":"application\/json","http_code":200,"header_size":2000,"request_size":575,"filetime":-1,"ssl_verify_result":0,"redirect_count":1,"total_time":1.668231,"namelookup_time":6.7e-5,"connect_time":0.053587,"pretransfer_time":0.27837,"size_upload":25618,"size_download":314,"speed_download":188,"speed_upload":15356,"download_content_length":-1,"upload_content_length":25618,"starttransfer_time":0.347088,"redirect_time":0.96567,"redirect_url":"","primary_ip":"158.85.132.88","certinfo":[],"primary_port":443,"local_ip":"192.168.1.5","local_port":64029}{"ranker_id":"54922ax21-rank-648","name":"PeggyRanker","created":"2016-11-28T15:28:12.591Z","url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers\/54922ax21-rank-648","status":"Training","status_description":"The ranker instance is in its training phase, not yet ready to accept rank requests"}
+		
+	Created at: 10:28 am ---> 10:37 am
+
+	{"ranker_id":"54922ax21-rank-648","name":"PeggyRanker","created":"2016-11-28T15:28:12.591Z","url":"https:\/\/gateway.watsonplatform.net\/retrieve-and-rank\/api\/v1\/rankers\/54922ax21-rank-648","status":"Failed","status_description":"Error encountered during training: Training data quality standards not met: invalid header (reserved character(s) (\" \") used in the entry \"have your doubts about diets\"). Row 1 of input data."}
 	*/
 ?>
