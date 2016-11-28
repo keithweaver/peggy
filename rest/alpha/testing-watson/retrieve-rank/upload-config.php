@@ -1,7 +1,7 @@
 <?php
 	// WILL REQUIRE A CLUSTER <--- NEEDS WORK
 	
-	$clusterId = "sc1689c542_dc4c_4cb5_bb51_6764d984e920";
+	$clusterId = "sc72db6189_284e_48a7_babe_76b39a8db887";
 	//$configName = "example-config";
 	//http://www.ibm.com/watson/developercloud/doc/retrieve-rank/tutorial.shtml
 	//THIS IS VERIFYING THE CLUSTER IS READY WITH solr_cluster_status

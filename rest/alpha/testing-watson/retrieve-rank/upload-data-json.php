@@ -69,4 +69,13 @@
 	echo var_dump($results);
 
 	//{"responseHeader":{"status":0,"QTime":1476}}
+	/*
+	/Applications/MAMP/htdocs/peggy/rest/alpha/testing-watson/retrieve-rank/answers.json
+
+	array(2) { ["body"]=> object(CURLFile)#1 (3) { ["name"]=> string(12) "answers.json" ["mime"]=> string(16) "application/json" ["postname"]=> string(1) "@" } ["solr_cluster_id"]=> string(38) "sc1689c542_dc4c_4cb5_bb51_6764d984e920" } 
+
+	string(45) "{"responseHeader":{"status":0,"QTime":1070}} " 
+
+	object(stdClass)#3 (1) { ["responseHeader"]=> object(stdClass)#2 (2) { ["status"]=> int(0) ["QTime"]=> int(1070) } }
+	*/
 ?>

@@ -17,7 +17,7 @@
 
 	$post = [
 		'cluster_size' => '1',
-		'cluster_name' => 'ExampleTest2'
+		'cluster_name' => 'PeggyCluster'
 	];
 
 	$data_strings = json_encode($post);
@@ -41,6 +41,7 @@
 	//sc1689c542_dc4c_4cb5_bb51_6764d984e920
 	//"{\"solr_cluster_id\":\"sc1689c542_dc4c_4cb5_bb51_6764d984e920\",\"cluster_name\":\"ExampleTest2\",\"cluster_size\":\"1\",\"solr_cluster_status\":\"NOT_AVAILABLE\"}"
 
+	//{"solr_cluster_id":"sc72db6189_284e_48a7_babe_76b39a8db887","cluster_name":"PeggyCluster","cluster_size":"1","solr_cluster_status":"NOT_AVAILABLE"}
 
 	//NEED TO SAVE solr_cluster_id
 	echo json_encode($result);

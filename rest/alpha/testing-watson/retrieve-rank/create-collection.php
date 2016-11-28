@@ -1,8 +1,8 @@
 <?php
 	// WILL REQUIRE A CLUSTER THAT IS READY
 	
-	$clusterId = "sc1689c542_dc4c_4cb5_bb51_6764d984e920";
-	$collectionName = "ExampleCollection";
+	$clusterId = "sc72db6189_284e_48a7_babe_76b39a8db887";
+	$collectionName = "WhatToExpectCollection";
 	$configurationName = "cranfield-solr-config.zip";
 
 	include_once('../../../../include/secret.php');
@@ -94,4 +94,6 @@
 		}
 	}
 	*/
+
+	//{"responseHeader":{"status":0,"QTime":12166},"success":{"10.176.142.240:5879_solr":{"responseHeader":{"status":0,"QTime":2476},"core":"WhatToExpectCollection_shard1_replica1"},"10.176.42.47:5773_solr":{"responseHeader":{"status":0,"QTime":2884},"core":"WhatToExpectCollection_shard1_replica2"}}}
 ?>
