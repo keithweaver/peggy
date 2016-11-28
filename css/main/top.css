@@ -1,0 +1,22 @@
+body{
+	background-color: #41bbfa;
+}
+.max-width-wrapper{
+	max-width: 900px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.max-search-wrapper{
+	max-width: 500px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.title{
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 59px;
+	color: #ffea5b;
+}
+.title-row{
+	padding-top: 50px;
+	padding-bottom: 30px;
+}
